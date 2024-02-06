@@ -5,9 +5,7 @@
 }
 
 body {
-  font-family: "Protest Riot", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Lato", sans-serif;
 }
 
 .main-nav {
@@ -54,4 +52,24 @@ body {
   color: #e8e8e8;
   font-size: 2em;
   cursor: pointer;
+}
+.bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+.nav-item {
+  color: lightgray;
+  margin-right: 4em;
+  cursor: pointer;
+}
+
+.slider {
+  background-image: url("https://images.unsplash.com/photo-1604147495798-57beb5d6af73?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80");
+}
+.slider-Wrapper {
+  display: flex;
+  align-items: center;
+  width: 500vw;
 }
