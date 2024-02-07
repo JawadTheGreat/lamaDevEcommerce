@@ -72,6 +72,7 @@ body {
 .slider-Wrapper {
   display: flex;
   width: 500vw;
+  transition: all 1s ease-in-out;
 }
 .slider-Item {
   position: relative;
@@ -101,13 +102,13 @@ body {
   top: 25%;
   right: 20%;
   color: #ffffff;
-  text-align: center;
+  text-align: right;
   font-size: 4em;
 }
 .buy-button {
   position: absolute;
   top: 60%;
-  right: 23.8%;
+  right: 20%;
   color: #000;
   background-color: #fff;
   font-size: 2em;
