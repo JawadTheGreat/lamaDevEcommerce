@@ -105,3 +105,24 @@ navItem.forEach((item, index) => {
     });
   });
 });
+
+//change shoe color
+
+currentProductColors.forEach((color, index) => {
+  color.addEventListener("click", () => {
+    currentProductImg.src = choosenProduct.colors[index].img;
+  });
+});
+
+//selecting shoe size
+
+currentProductSizes.forEach((size, index) => {
+  size.addEventListener("click", () => {
+    currentProductSizes.forEach((size, index) => {
+      size.style.backgroundColor = "#fff";
+      size.style.color = "#000";
+    });
+    size.style.backgroundColor = "#000";
+    size.style.color = "#fff";
+  });
+});

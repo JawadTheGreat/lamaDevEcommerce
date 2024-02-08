@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Lato", sans-serif;
 }
@@ -249,4 +253,25 @@ body {
   border-radius: 8px;
   cursor: pointer;
   margin-top: 5px;
+}
+
+.gallery {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5em;
+}
+
+.galleryItem {
+  flex: 1;
+  padding: 4em;
+}
+
+.galleryImg {
+  width: 100%;
+}
+
+.galleryTitle {
+  font-size: 2em;
+  font-weight: 900;
 }
