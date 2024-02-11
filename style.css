@@ -269,11 +269,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-.cartItems {
-  display: flex;
+.cartSectionTitle {
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 1em;
+}
 
+.cartRow {
+  display: flex;
   align-items: center;
 }
 
