@@ -126,3 +126,54 @@ currentProductSizes.forEach((size, index) => {
     size.style.color = "#fff";
   });
 });
+
+//shopping cart functionalities
+
+//opening and closing the cart
+const cartIcon = document.querySelector(".cartIcon");
+const cartSection = document.querySelector(".cartSection");
+const closeCartBtn = document.querySelector(".closeCartBtn");
+
+cartIcon.addEventListener("click", () => {
+  cartSection.style.display = "flex";
+});
+
+closeCartBtn.addEventListener("click", () => {
+  cartSection.style.display = "none";
+});
+
+//removing items from the cart
+let removeButtons = document.querySelectorAll(".removeBtn");
+removeButtons.forEach((removeButton, index) => {
+  removeButton.addEventListener("click", (event) => {
+    removeButton.parentElement.parentElement.remove();
+    updateCartTotal();
+  });
+});
+
+//tracking quantity input changes
+let quantityInputs = document.querySelectorAll(".cartQuantityInput");
+quantityInputs.forEach((quantityInputElement, index) => {
+  quantityInputElement.addEventListener("change", (event) => {
+    let quantityInput = event.target;
+    if (isNaN(quantityInput.value) || quantityInput.value <= 0) {
+      quantityInput.value = 1;
+    }
+    updateCartTotal();
+  });
+});
+
+// calculating cart total
+let updateCartTotal = () => {
+  let total = 0;
+  let cartRows = document.querySelectorAll(".cartRow");
+  cartRows.forEach((cartRow, index) => {
+    let price = parseFloat(
+      cartRow.querySelector(".cartPrice").innerText.replace("$", "")
+    );
+
+    let quantity = cartRow.querySelector(".cartQuantityInput").value;
+    console.log(price, quantity);
+  });
+};
+updateCartTotal();
