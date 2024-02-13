@@ -127,7 +127,7 @@ currentProductSizes.forEach((size, index) => {
   });
 });
 
-//shopping cart functionalities
+//***shopping cart functionalities***
 
 //opening and closing the cart
 const cartIcon = document.querySelector(".cartIcon");
@@ -163,17 +163,61 @@ quantityInputs.forEach((quantityInputElement, index) => {
   });
 });
 
+//adding items to cart
+document.querySelector(".productButton").addEventListener("click", (event) => {
+  let button = event.target;
+  let productImgSrc =
+    button.parentElement.parentElement.querySelector(".productImg").src;
+  let productTitle =
+    button.parentElement.querySelector(".productTitle").textContent;
+  let productPrice =
+    button.parentElement.querySelector(".productPrice").textContent;
+
+  addItemsToCart(productImgSrc, productTitle, productPrice);
+  updateCartTotal();
+});
+
+function addItemsToCart(imgSrc, title, price) {
+  let cartRow = document.createElement("div");
+  cartRow.classList.add(".cartRow");
+  let cartItems = document.querySelector(".cartItems");
+  let cartItemTitles = cartItems.querySelectorAll(".cartItemTitle");
+
+  for (let i = 0; i < cartItemTitles.length; i++) {
+    if (cartItemTitles[i].textContent === title) {
+      alert("This item is alraedy added.");
+      return;
+    }
+  }
+
+  let cartRowContent = `<div class="cartColumn cartItem">
+                          <img src="${imgSrc}" alt="" class="cartItemImg" />
+                          <span class="cartItemTitle">${title}</span>
+                        </div>
+                        <div class="cartColumn cartPrice">${price}</div>
+                        <div class="cartColumn cartQuantity">
+                          <input value="1" type="number" class="cartQuantityInput" />
+                          <button type="button" class="removeBtn">REMOVE</button>
+                        </div>
+                        </div>`;
+
+  cartRow.innerHTML = cartRowContent;
+  cartItems.append(cartRow);
+}
+
 // calculating cart total
 let updateCartTotal = () => {
   let total = 0;
   let cartRows = document.querySelectorAll(".cartRow");
-  cartRows.forEach((cartRow, index) => {
-    let price = parseFloat(
-      cartRow.querySelector(".cartPrice").innerText.replace("$", "")
-    );
 
-    let quantity = cartRow.querySelector(".cartQuantityInput").value;
-    console.log(price, quantity);
-  });
+  //we have to start from index = 1, otherwise we get null results because first elements are cart headers
+  for (let i = 1; i < cartRows.length; i++) {
+    let price = cartRows[i]
+      .querySelector(".cartPrice")
+      .textContent.replace("$", "");
+    let quantity = cartRows[i].querySelector(".cartQuantityInput").value;
+    total = total + price * quantity;
+  }
+  total = Math.round(total * 100) / 100;
+  document.querySelector(".cartTotalPrice").textContent = "$" + total;
 };
-updateCartTotal();
