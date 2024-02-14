@@ -142,6 +142,24 @@ closeCartBtn.addEventListener("click", () => {
   cartSection.style.display = "none";
 });
 
+//cart items counter function
+
+function countCartItems() {
+  let cartItemCounter = document.querySelector(".cartItemCounter");
+  let cartRows = document.querySelectorAll(".cartRow");
+
+  cartItemCounter.addEventListener("click", () => {
+    cartSection.style.display = "flex";
+  });
+
+  if (cartRows.length > 1) {
+    cartItemCounter.style.display = "flex";
+    cartItemCounter.textContent = cartRows.length - 1;
+  } else {
+    cartItemCounter.style.display = "none";
+  }
+}
+
 //removing items from the cart
 let removeButtons = document.querySelectorAll(".removeBtn");
 removeButtons.forEach((removeButton, index) => {
@@ -151,6 +169,7 @@ function removeButtonClicked(event) {
   let removeButton = event.target;
   removeButton.parentElement.parentElement.remove();
   updateCartTotal();
+  countCartItems();
 }
 
 //tracking quantity input changes
@@ -179,6 +198,7 @@ document.querySelector(".productButton").addEventListener("click", (event) => {
 
   addItemsToCart(productImgSrc, productTitle, productPrice);
   updateCartTotal();
+  countCartItems();
 });
 
 function addItemsToCart(imgSrc, title, price) {
@@ -216,7 +236,11 @@ function addItemsToCart(imgSrc, title, price) {
 }
 
 //purchase button functionalities
-document.querySelector(".purchaseBtn").addEventListener("click", (event) => {
+document
+  .querySelector(".purchaseBtn")
+  .addEventListener("click", purchaseButtonClicked);
+
+function purchaseButtonClicked(event) {
   let cartRows = document.querySelectorAll(".cartRow");
   //first cartRow node will not be removed because those are cart headers
   if (cartRows.length > 1) {
@@ -228,16 +252,16 @@ document.querySelector(".purchaseBtn").addEventListener("click", (event) => {
     }
     alert("Thank you for your purchase");
     updateCartTotal();
+    countCartItems();
   } else {
     alert("Your cart is empty");
   }
-});
+}
 
 // calculating cart total
-let updateCartTotal = () => {
+function updateCartTotal() {
   let total = 0;
   let cartRows = document.querySelectorAll(".cartRow");
-
   //we have to start from index = 1, otherwise we get null results because first elements are cart headers
   for (let i = 1; i < cartRows.length; i++) {
     let price = cartRows[i]
@@ -248,5 +272,4 @@ let updateCartTotal = () => {
   }
   total = Math.round(total * 100) / 100;
   document.querySelector(".cartTotalPrice").textContent = "$" + total;
-};
-updateCartTotal();
+}

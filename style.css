@@ -37,7 +37,6 @@ body {
   justify-content: space-between;
   background-color: grey;
   padding: 1em;
-
   border-radius: 0.5em;
   width: 30vw;
 }
@@ -58,7 +57,7 @@ body {
 
 .nav-offer {
   color: #e8e8e8;
-  font-size: 2em;
+  font-size: 1.7em;
   cursor: pointer;
 }
 .bottom-nav {
@@ -127,13 +126,6 @@ body {
   border-radius: 5px;
 }
 
-.buy-button:hover,
-.productButton:hover {
-  color: #fff;
-  background-color: #000;
-  transition: 0.5s ease-in-out;
-}
-
 .slider-Bg {
   width: 45em;
   height: 45em;
@@ -192,7 +184,7 @@ body {
 /* product section component */
 
 .product {
-  height: 80vh;
+  height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -274,6 +266,22 @@ body {
   top: 20px;
   right: 20px;
   font-size: 1.5em;
+  cursor: pointer;
+}
+
+.cartItemCounter {
+  position: absolute;
+  top: 35px;
+  right: 12px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: #c62f2f;
+  color: #fff;
+  text-align: center;
+  display: none;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
@@ -362,10 +370,6 @@ body {
   cursor: pointer;
 }
 
-.removeBtn:hover {
-  background-color: #ba0000;
-}
-
 .cartTotal {
   align-self: normal;
   margin-left: 58%;
@@ -386,11 +390,6 @@ body {
   cursor: pointer;
 }
 
-.purchaseBtn:hover {
-  background-color: gray;
-  color: #fff;
-}
-
 .closeCartBtn {
   position: absolute;
   font-size: 2em;
@@ -398,10 +397,6 @@ body {
   right: 8px;
   cursor: pointer;
   /* border: 1px solid black; */
-}
-
-.closeCartBtn:hover {
-  color: #ba0000;
 }
 
 /* gallery section component */
@@ -495,4 +490,202 @@ body {
 
 .copyright {
   color: gray;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .buy-button:hover,
+  .productButton:hover {
+    color: #fff;
+    background-color: #000;
+  }
+  .removeBtn:hover {
+    background-color: #ba0000;
+  }
+  .closeCartBtn:hover {
+    color: #ba0000;
+  }
+  .purchaseBtn:hover {
+    background-color: gray;
+    color: #fff;
+  }
+}
+
+/* styles for laptops  */
+@media only screen and (max-width: 1024px) {
+  .slider-img {
+    width: 25em;
+  }
+  .slider-Bg {
+    width: 25em;
+    height: 25em;
+  }
+  .slider-Price {
+    font-size: 2em;
+  }
+  .slider-Title {
+    font-size: 2.5em;
+  }
+  .buy-button {
+    font-size: 1em;
+  }
+  .features {
+    padding: 4em;
+  }
+  .featureImg {
+    width: 3.5em;
+  }
+  .featureTitle {
+    font-size: 1.1em;
+  }
+  .featureDescription {
+    font-size: 0.9em;
+    max-width: 12em;
+  }
+
+  .product {
+    padding: 1em 2em;
+  }
+  .purchaseBtn {
+    font-size: 1.5em;
+  }
+
+  .gallery {
+    padding: 2em 1em;
+  }
+  .galleryItem {
+    padding: 1.5em;
+  }
+  .galleryTitle {
+    font-size: 2em;
+  }
+
+  .footer {
+    padding: 2em;
+  }
+  .fMenuTitle {
+    font-size: 1.2em;
+  }
+  .fListItem {
+    font-size: 0.8em;
+    margin: 0.7em 0;
+  }
+  .rightFooter {
+    padding-left: 1em;
+  }
+  .newsletterTitle {
+    font-size: 1.3em;
+  }
+  .newsletterMailInput {
+    height: 2.1em;
+  }
+  .newsletterMail {
+    margin: 0.7em 0;
+  }
+  .newsletterMailBtn {
+    font-size: 0.8em;
+  }
+  .followusTitle {
+    margin-top: 0.9em;
+    font-size: 1.2em;
+  }
+  .socialLinkIcon {
+    width: 1.1em;
+    margin-top: 0.7em;
+  }
+}
+
+/* styles for tablets  */
+@media only screen and (max-width: 768px) {
+  .nav-logo {
+    width: 7em;
+  }
+  .search {
+    width: 40vw;
+    padding: 0.5em 1em;
+  }
+  .search-icon {
+    width: 1em;
+  }
+  .nav-offer {
+    font-size: 1.3em;
+  }
+  .nav-item {
+    font-size: 1em;
+  }
+
+  .nav-item:last-child {
+    margin-right: 0;
+  }
+  .slider-Price {
+    left: 17%;
+  }
+  .slider-Title {
+    right: 10%;
+  }
+  .buy-button {
+    right: 10%;
+  }
+  .features {
+    padding: 3em 1.5em;
+  }
+  .featureImg {
+    width: 3em;
+  }
+  .featureTitle {
+    margin-bottom: 0.5em;
+    font-size: 1em;
+  }
+  .featureDescription {
+    font-size: 0.8em;
+  }
+
+  .product {
+    padding: 2em;
+  }
+  .productImg {
+    width: 40%;
+  }
+  .productDetails {
+    width: 50%;
+    font-size: 0.8em;
+  }
+  .size {
+    text-align: center;
+    height: auto;
+    width: auto;
+  }
+  .cartSection {
+    width: 80vw;
+  }
+  .galleryTitle {
+    font-size: 1.5em;
+  }
+
+  .footer {
+    padding: 2.5em 1.5em;
+  }
+  .fMenuTitle {
+    font-size: 1em;
+  }
+  .fListItem {
+    font-size: 0.7em;
+  }
+  .leftFooter {
+    flex: 1.7;
+  }
+
+  .newsletterTitle {
+    font-size: 1.1em;
+  }
+
+  .followusTitle {
+    font-size: 1.1em;
+  }
+  .socialLinkIcon {
+    width: 1em;
+  }
+
+  .copyright {
+    font-size: 0.7em;
+  }
 }
