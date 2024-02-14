@@ -279,7 +279,7 @@ body {
 
 .cartSection {
   position: absolute;
-  height: 90vh;
+  height: auto;
   width: 60vw;
   background-color: #e8e8e8;
   z-index: 2;
@@ -289,6 +289,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 5em 0;
 }
 
 .cartSectionHeader {

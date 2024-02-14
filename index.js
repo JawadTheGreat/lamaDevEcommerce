@@ -145,23 +145,27 @@ closeCartBtn.addEventListener("click", () => {
 //removing items from the cart
 let removeButtons = document.querySelectorAll(".removeBtn");
 removeButtons.forEach((removeButton, index) => {
-  removeButton.addEventListener("click", (event) => {
-    removeButton.parentElement.parentElement.remove();
-    updateCartTotal();
-  });
+  removeButton.addEventListener("click", removeButtonClicked);
 });
+function removeButtonClicked(event) {
+  let removeButton = event.target;
+  removeButton.parentElement.parentElement.remove();
+  updateCartTotal();
+}
 
 //tracking quantity input changes
 let quantityInputs = document.querySelectorAll(".cartQuantityInput");
 quantityInputs.forEach((quantityInputElement, index) => {
-  quantityInputElement.addEventListener("change", (event) => {
-    let quantityInput = event.target;
-    if (isNaN(quantityInput.value) || quantityInput.value <= 0) {
-      quantityInput.value = 1;
-    }
-    updateCartTotal();
-  });
+  quantityInputElement.addEventListener("change", cartInputChanged);
 });
+
+function cartInputChanged(event) {
+  let quantityInput = event.target;
+  if (isNaN(quantityInput.value) || quantityInput.value <= 0) {
+    quantityInput.value = 1;
+  }
+  updateCartTotal();
+}
 
 //adding items to cart
 document.querySelector(".productButton").addEventListener("click", (event) => {
@@ -179,13 +183,13 @@ document.querySelector(".productButton").addEventListener("click", (event) => {
 
 function addItemsToCart(imgSrc, title, price) {
   let cartRow = document.createElement("div");
-  cartRow.classList.add(".cartRow");
+  cartRow.classList.add("cartRow");
   let cartItems = document.querySelector(".cartItems");
-  let cartItemTitles = cartItems.querySelectorAll(".cartItemTitle");
+  let cartItemImages = cartItems.querySelectorAll(".cartItemImg");
 
-  for (let i = 0; i < cartItemTitles.length; i++) {
-    if (cartItemTitles[i].textContent === title) {
-      alert("This item is alraedy added.");
+  for (let i = 0; i < cartItemImages.length; i++) {
+    if (cartItemImages[i].src === imgSrc) {
+      alert("This item is already added.");
       return;
     }
   }
@@ -203,7 +207,31 @@ function addItemsToCart(imgSrc, title, price) {
 
   cartRow.innerHTML = cartRowContent;
   cartItems.append(cartRow);
+  cartRow
+    .querySelector(".removeBtn")
+    .addEventListener("click", removeButtonClicked);
+  cartRow
+    .querySelector(".cartQuantityInput")
+    .addEventListener("change", cartInputChanged);
 }
+
+//purchase button functionalities
+document.querySelector(".purchaseBtn").addEventListener("click", (event) => {
+  let cartRows = document.querySelectorAll(".cartRow");
+  //first cartRow node will not be removed because those are cart headers
+  if (cartRows.length > 1) {
+    let i = cartRows.length - 1;
+
+    while (i > 0) {
+      cartRows[i].remove();
+      i--;
+    }
+    alert("Thank you for your purchase");
+    updateCartTotal();
+  } else {
+    alert("Your cart is empty");
+  }
+});
 
 // calculating cart total
 let updateCartTotal = () => {
@@ -221,3 +249,4 @@ let updateCartTotal = () => {
   total = Math.round(total * 100) / 100;
   document.querySelector(".cartTotalPrice").textContent = "$" + total;
 };
+updateCartTotal();
