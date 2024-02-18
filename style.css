@@ -46,6 +46,10 @@ body {
   width: 85%;
   height: 1.8em;
 }
+
+.search-input:focus {
+  outline: none;
+}
 .search-input::placeholder {
   color: lightgray;
   font-size: 1.1em;
@@ -124,6 +128,7 @@ body {
   font-weight: bold;
   padding: 10px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .slider-Bg {
@@ -396,7 +401,6 @@ body {
   top: 0;
   right: 8px;
   cursor: pointer;
-  /* border: 1px solid black; */
 }
 
 /* gallery section component */
@@ -510,6 +514,18 @@ body {
   }
 }
 
+/* styles for large laptops */
+@media only screen and (max-width: 1440px) {
+  .slider-Price {
+    left: 20%;
+  }
+
+  .slider-Title,
+  .buy-button {
+    right: 15%;
+  }
+}
+
 /* styles for laptops  */
 @media only screen and (max-width: 1024px) {
   .slider-img {
@@ -521,12 +537,15 @@ body {
   }
   .slider-Price {
     font-size: 2em;
+    left: 25%;
   }
   .slider-Title {
     font-size: 2.5em;
+    right: 20%;
   }
   .buy-button {
     font-size: 1em;
+    right: 20%;
   }
   .features {
     padding: 4em;
@@ -687,5 +706,145 @@ body {
 
   .copyright {
     font-size: 0.7em;
+  }
+}
+
+/* styles for mobiles */
+@media only screen and (max-width: 480px) {
+  .main-nav {
+    padding: 1em;
+  }
+  .nav-logo {
+    width: 5em;
+  }
+
+  .nav-offer {
+    font-size: 1em;
+    width: 4em;
+    text-align: center;
+  }
+
+  .bottom-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5em;
+  }
+
+  .nav-item {
+    margin: 0.5em 1em;
+  }
+
+  .slider-img {
+    width: 20em;
+  }
+  .slider-Price {
+    top: 5%;
+    left: 5%;
+  }
+  .slider-Title {
+    font-size: 2em;
+    top: 5%;
+    right: 5%;
+  }
+  .buy-button {
+    top: 85%;
+    right: 5%;
+  }
+
+  .slider-Bg {
+    width: 20em;
+    height: 20em;
+  }
+
+  .features {
+    flex-direction: column;
+  }
+  .feature {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .product {
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+    padding: 4em auto;
+  }
+  .productImg {
+    width: 15em;
+  }
+  .productDetails {
+    width: 80%;
+  }
+  .productTitle {
+    font-size: 2em;
+  }
+  .productColor,
+  .productSizes {
+    justify-content: center;
+  }
+  .color,
+  .size {
+    margin: 0 1em;
+  }
+
+  .cartSectionHeader {
+    font-size: 1.8em;
+  }
+  .cartColumn {
+    font-size: 1.2em;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cartItemImg {
+    width: 2.5em;
+  }
+  .cartItemTitle {
+    margin: 0;
+    font-size: 0.8em;
+  }
+  .cartItem {
+    width: 40%;
+  }
+
+  .cartQuantity {
+    flex-wrap: nowrap;
+    margin-right: 0;
+    width: 30%;
+  }
+  .cartQuantityInput {
+    width: 2em;
+  }
+  .removeBtn {
+    font-size: 0.5em;
+    margin-right: 1em;
+  }
+
+  .cartTotal {
+    font-size: 1.3em;
+    margin-left: 50%;
+  }
+
+  .gallery {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer {
+    flex-direction: column;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .footerMenu {
+    margin-left: 1em;
+    margin-right: 1em;
+    text-align: center;
+  }
+
+  .rightFooter {
+    margin-top: 3em;
+    padding: 0;
+    text-align: center;
   }
 }
